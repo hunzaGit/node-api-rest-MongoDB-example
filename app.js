@@ -47,6 +47,9 @@ app.use('/api', tvshows);
 
 
 var uri = 'mongodb://hunza:1234@ds127153.mlab.com:27153/tvshows';
+var uriHeroku = 'mongodb://hunza:1234@ds129333.mlab.com:29333/heroku_bk3g2c0p';
+
+
 
 var options = {
     server: {socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}},
@@ -54,7 +57,7 @@ var options = {
     auth: {role: 'admin'}
 };
 
-mongoose.connect(uri, options);
+mongoose.connect(uriHeroku, options);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'ERROR de conexion a Mongo: '));
