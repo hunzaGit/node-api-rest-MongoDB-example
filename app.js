@@ -63,13 +63,22 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'ERROR de conexion a Mongo: '));
 
 db.once('open', () => {
-    console.log("CONECTADOOOO A MONGOO!!!!")
+    console.log("CONECTADOOOO A MONGOO!!!!");
 
-    app.listen(3000, () => {
-        console.log("Servidor arrancado en puerto 3000");
+    app.set('port', (process.env.PORT || 5000));
+
+    app.listen(app.get('port'), () => {
+        console.log("Servidor arrancado en puerto 5000");
 
     });
 });
+
+
+
+
+
+
+
 
 
 function pruebaMetodos() {
