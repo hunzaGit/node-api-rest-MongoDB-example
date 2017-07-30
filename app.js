@@ -1,3 +1,5 @@
+require('@risingstack/trace');
+
 var express = require("express"),
     app = express(),
     http = require('http'),
