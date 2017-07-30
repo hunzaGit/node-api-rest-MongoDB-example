@@ -5,8 +5,8 @@ var express = require("express"),
     bodyParser      = require("body-parser"),
     methodOverride  = require("method-override"),
     mongoose = require('mongoose'),
-    morgan = require("morgan"); //Morgan nos muestra las peticiones por consola.
-
+    morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
+    fs = require('fs');
 
 
 
@@ -25,6 +25,16 @@ var router = express.Router();
 router.get('/', function(req, res) {
     res.send("Hello world!");
 });
+
+router.get('/loaderio-ff50c14950f9695428b614d8da4b41fc.txt', function(req, res) {
+   fs.readFile('loaderio-ff50c14950f9695428b614d8da4b41fc.txt', (err, buffer)=> {
+       "use strict";
+       if(err) console.error(err);
+       res.send(buffer)
+   });
+});
+
+
 app.use(router);
 
 // API routes
