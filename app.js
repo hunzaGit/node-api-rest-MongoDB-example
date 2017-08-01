@@ -9,7 +9,7 @@ var express = require("express"),
     mongoose = require('mongoose'),
     morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
     fs = require('fs'),
-    config = require('./config')('dev');
+    config = require('./config')('prod');
 
 
 
