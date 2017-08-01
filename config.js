@@ -16,7 +16,7 @@ var nombreBD= "tvshows";
 module.exports = {
    	port : process.env.PORT || 5000,
 
-	uri : process.env.MONGODB_URI || process.env.MONGODB_URI_DEV,//('mongodb://'+usuario+':'+password+'@'+host+':'+port_BD+'/'+nombreBD),
+	uri :  process.env.MONGODB_URI_DEV || process.env.MONGODB_URI,//('mongodb://'+usuario+':'+password+'@'+host+':'+port_BD+'/'+nombreBD),
     options: {
         server: {socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}},
         replset: {socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}},
