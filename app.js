@@ -9,7 +9,7 @@ var express = require("express"),
     mongoose = require('mongoose'),
     morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
     fs = require('fs'),
-    config = require('./config');
+    config = require('./config')('dev');
 
 
 
@@ -71,7 +71,7 @@ db.once('open', () => {
 
     app.listen(config.port, () => {
         console.log("Servidor arrancado en puerto " + config.port);
-
+        console.log(config.uri);
     });
 });
 
