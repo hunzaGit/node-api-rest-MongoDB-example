@@ -8,7 +8,8 @@ var express = require("express"),
     methodOverride  = require("method-override"),
     mongoose = require('mongoose'),
     morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
-    fs = require('fs');
+    fs = require('fs'),
+    config = require('./config');
 
 
 
@@ -25,7 +26,7 @@ var TVShowCtrl = require('./controllers/tvshows');
 // Example Route
 var router = express.Router();
 router.get('/', function(req, res) {
-    res.send("Hello world!");
+    res.send("Hello world! " + config.uri);
 });
 
 router.get('/loaderio-ff50c14950f9695428b614d8da4b41fc.txt', function(req, res) {
@@ -60,31 +61,16 @@ app.use('/api', tvshows);
 //            CONEXION A BBDD MOGNODB
 //***************************************************
 
-
-var uri = 'mongodb://hunza:1234@ds127153.mlab.com:27153/tvshows';
-var uristring =
-    process.env.MONGODB_URI ||
-    uri;
-
-
-var options = {
-    server: {socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}},
-    replset: {socketOptions: {keepAlive: 300000, connectTimeoutMS: 30000}},
-    auth: {role: 'admin'}
-};
-
-mongoose.connect(uri, options);
+mongoose.connect(config.uri, config.options);
 var db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'ERROR de conexion a Mongo: '));
+db.on('error', console.error.bind(console, 'ERROR de conexión a Mongo: '));
 
 db.once('open', () => {
     console.log("CONECTADOOOO A MONGOO!!!!");
 
-    app.set('port', (process.env.PORT || 5000));
-
-    app.listen(app.get('port'), () => {
-        console.log("Servidor arrancado en puerto 5000");
+    app.listen(config.port, () => {
+        console.log("Servidor arrancado en puerto " + config.port);
 
     });
 });
