@@ -56,6 +56,9 @@ app.use('/api', tvshows);
 
 
 
+//***************************************************
+//            CONEXION A BBDD MOGNODB
+//***************************************************
 
 
 var uri = 'mongodb://hunza:1234@ds127153.mlab.com:27153/tvshows';
@@ -70,7 +73,7 @@ var options = {
     auth: {role: 'admin'}
 };
 
-mongoose.connect(uristring, options);
+mongoose.connect(uri, options);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'ERROR de conexion a Mongo: '));
