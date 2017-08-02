@@ -11,6 +11,7 @@
     "express": "^4.7.1",
     "method-override": "^2.1.2",
     "mongoose": "~4.7.7",
+    "mongoose-extend-schema": "^1.0.0",
     "morgan": "^1.8.2"
   }
 }

@@ -9,7 +9,7 @@ var express = require("express"),
     mongoose = require('mongoose'),
     morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
     fs = require('fs'),
-    config = require('./config')('prod');
+    config = require('./config');
 
 
 
@@ -21,7 +21,7 @@ app.use(morgan("dev"));
 
 // Import Models and controllers
 var models     = require('./models/tvshow')(app, mongoose);
-var TVShowCtrl = require('./controllers/tvshows');
+var TVShowCtrl = require('./Serv_Apli/tvshows');
 
 // Example Route
 var router = express.Router();

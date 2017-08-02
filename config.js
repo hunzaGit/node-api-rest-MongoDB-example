@@ -1,6 +1,10 @@
 
 module.exports = (oper) => {
     "use strict";
+
+    //var oper = process.env.ESTADO_DESAROLLO || 'dev';
+
+
     //******************************************
     //          CONFIGURACIÓN BBDD
     //******************************************
@@ -10,6 +14,7 @@ module.exports = (oper) => {
     var usuario= "hunza";
     var password= "1234";
     var nombreBD= "tvshows";
+
 
 
     return {
