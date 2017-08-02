@@ -133,6 +133,18 @@ router.get('/', function(req, res) {
     res.send("Hello world! " + config.uri);
 });
 
+
+router.get('/loaderio-ff50c14950f9695428b614d8da4b41fc.txt', function(req, res) {
+    fs.readFile('loaderio-ff50c14950f9695428b614d8da4b41fc.txt', (err, buffer)=> {
+        "use strict";
+        if(err) console.error(err);
+        res.send(buffer)
+    });
+});
+
+
+
+
 router.get('/saveUser', function (req, res) {
     const john = new UserModel({
         email: 'user2@site.com',
