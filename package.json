@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app2.js"
   },
   "dependencies": {
     "@risingstack/trace": "^3.14.0",
