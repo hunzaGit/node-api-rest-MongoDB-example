@@ -127,6 +127,12 @@ const AdminUserModel = mongoose.model('admins', AdminUserSchema);
 
 // Example Route
 var router = express.Router();
+
+
+router.get('/', function(req, res) {
+    res.send("Hello world! " + config.uri);
+});
+
 router.get('/saveUser', function (req, res) {
     const john = new UserModel({
         email: 'user2@site.com',
