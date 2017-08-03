@@ -16,6 +16,24 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(morgan("dev"));
 
+
+
+app.disable('X-Powered-By');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Import Models and controllers
 var models = require('./models/tvshow')(app, mongoose);
 var TVShowCtrl = require('./Serv_Apli/tvshows');
@@ -133,6 +151,10 @@ router.get('/', function(req, res) {
     res.send("Hello world! " + config.uri);
 });
 
+
+router.get('/break', function(req, res) {
+    throw new Error('oh no!');
+});
 
 router.get('/loaderio-ff50c14950f9695428b614d8da4b41fc.txt', function(req, res) {
     fs.readFile('loaderio-ff50c14950f9695428b614d8da4b41fc.txt', (err, buffer)=> {
@@ -262,6 +284,9 @@ router.post('/rellenaBD/:num', function (req, res) {
     res.send(cont + ' inserts')
 
 });
+
+
+
 
 
 app.use(router);
