@@ -2,19 +2,22 @@
  * Created by Rodrigo de Miguel on 07/08/2017.
  */
 var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 // email sender function
 exports.sendEmail = function (req, res, callback = Function()) {
-    console.log('preparando email...');
 
+
+    console.log('preparando email...');
+    console.log(process.env.PASS_MAIL);
 
     // Definimos el transporter
-    var transporter = nodemailer.createTransport({
+    var transporter = nodemailer.createTransport(smtpTransport({
         service: 'Gmail',
         auth: {
             user: 'rodrigo.trazas@gmail.com',
             pass: process.env.PASS_MAIL
         }
-    });
+    }));
 
     console.log('ESCRIBIENDO CORREO...');
     // Definimos el email

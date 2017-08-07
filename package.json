@@ -13,6 +13,7 @@
     "mongoose": "~4.7.7",
     "mongoose-extend-schema": "^1.0.0",
     "morgan": "^1.8.2",
-    "nodemailer": "^4.0.1"
+    "nodemailer": "^4.0.1",
+    "nodemailer-smtp-transport": "^2.7.4"
   }
 }
