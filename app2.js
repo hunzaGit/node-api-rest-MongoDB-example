@@ -256,6 +256,13 @@ router.get('/get/:tipo/:num/:pag', getParams, function (req, res) {
 });
 
 
+var EmailCtrl = require('./Serv_Apli/mailCtrl');
+
+router.get('/enviarMail', EmailCtrl.sendEmail);
+
+
+
+
 router.post('/rellenaBD/:num', function (req, res) {
 
     cont = 0;
