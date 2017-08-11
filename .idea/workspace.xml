@@ -62,10 +62,12 @@
       <file leaf-file-name="mailCtrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Serv_Apli/mailCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="150" lean-forward="false" selection-start-line="14" selection-start-column="150" selection-end-line="14" selection-end-column="150" />
+            <state relative-caret-position="238">
+              <caret line="16" column="148" lean-forward="false" selection-start-line="16" selection-start-column="148" selection-end-line="16" selection-end-column="148" />
               <folding>
                 <element signature="e#0#54#0" expanded="false" />
+                <marker date="1502460690778" expanded="true" signature="717:737" ph="..." />
+                <marker date="1502460690778" expanded="true" signature="891:911" ph="..." />
               </folding>
             </state>
           </provider>
@@ -702,12 +704,12 @@
       <workItem from="1501868722345" duration="34000" />
       <workItem from="1502101387930" duration="3920000" />
       <workItem from="1502449891422" duration="585000" />
-      <workItem from="1502452429250" duration="5586000" />
+      <workItem from="1502452429250" duration="6595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69872000" />
+    <option name="totallyTimeSpent" value="70881000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -781,6 +783,8 @@
           <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="e#0#54#0" expanded="false" />
+            <marker date="1502460690778" expanded="true" signature="717:737" ph="..." />
+            <marker date="1502460690778" expanded="true" signature="891:911" ph="..." />
           </folding>
         </state>
       </provider>
@@ -826,6 +830,8 @@
           <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="e#0#54#0" expanded="false" />
+            <marker date="1502460690778" expanded="true" signature="717:737" ph="..." />
+            <marker date="1502460690778" expanded="true" signature="891:911" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1183,10 +1189,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Serv_Apli/mailCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="150" lean-forward="false" selection-start-line="14" selection-start-column="150" selection-end-line="14" selection-end-column="150" />
+        <state relative-caret-position="238">
+          <caret line="16" column="148" lean-forward="false" selection-start-line="16" selection-start-column="148" selection-end-line="16" selection-end-column="148" />
           <folding>
             <element signature="e#0#54#0" expanded="false" />
+            <marker date="1502460690778" expanded="true" signature="717:737" ph="..." />
+            <marker date="1502460690778" expanded="true" signature="891:911" ph="..." />
           </folding>
         </state>
       </provider>
