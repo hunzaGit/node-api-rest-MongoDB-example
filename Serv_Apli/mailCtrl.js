@@ -12,8 +12,8 @@ exports.sendEmail = function (req, res, callback = Function()) {
     var subject = 'Registro adoptaUnAnimal prueba';
     var content = new helper.Content('text/HTML', "<html><body>Holaa Rodri,<br>" +
         "Esto es una prueba de email desde Heroku con texto escrito en <b>HTML</b>, " +
-         "y esta es la foto de mi careto"+
-            "<img align='center' src='public/images/neo.jpg' width='200' height='250'>"+
+         "y esta es la foto de mi careto <br>"+
+            "<img align='center' src='http://s2.quickmeme.com/img/f2/f22c50f29387e1461274eb73ae3a329e97e3aa09ac8dffee9218e017cd6c8b99.jpg' width='200' height='250'>"+
         "<img align='center' src='https://cv-rodrigodemiguel.herokuapp.com/images/rodri.jpg' width='200' height='250'></body></html>");
     var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 

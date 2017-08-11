@@ -1,3 +1,5 @@
+/* global __dirname */
+
 var express = require("express"),
     app = express(),
     http = require('http'),
@@ -7,6 +9,7 @@ var express = require("express"),
     mongoose = require('mongoose'),
     morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
     fs = require('fs'),
+    path = require('path'),
     config = require('./config')('dev');
 
 
@@ -20,7 +23,9 @@ app.use(morgan("dev"));
 
 app.disable('X-Powered-By');
 
-
+//Configuración para ficheros estáticos.
+var ficherosEstaticos = path.join(__dirname, "public");
+app.use(express.static(ficherosEstaticos));
 
 
 
