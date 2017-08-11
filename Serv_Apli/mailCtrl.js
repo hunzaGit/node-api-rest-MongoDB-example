@@ -6,39 +6,28 @@ var smtpTransport = require('nodemailer-smtp-transport');
 // email sender function
 exports.sendEmail = function (req, res, callback = Function()) {
 
+    var helper = require('sendgrid').mail;
+    var fromEmail = new helper.Email('rodrigo.trazas@gmail.com');
+    var toEmail = new helper.Email('rodrigo.trazas@gmail.com');
+    var subject = 'Sending with SendGrid is Fun';
+    var content = new helper.Content('text/plain', 'and easy to do anywhere, even with Node.js');
+    var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
-    console.log('preparando email...');
-    console.log(process.env.PASS_MAIL);
+    var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+    var request = sg.emptyRequest({
+        method: 'POST',
+        path: '/v3/mail/send',
+        body: mail.toJSON()
+    });
 
-    // Definimos el transporter
-    var transporter = nodemailer.createTransport(smtpTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'rodrigo.trazas@gmail.com',
-            pass: process.env.PASS_MAIL
-        }
-    }));
-
-    console.log('ESCRIBIENDO CORREO...');
-    // Definimos el email
-    var mailOptions = {
-        from: 'rodrigo.trazas@gmail.com',
-        to: 'rodrigo.trazas@gmail.com',
-        subject: 'prueba de correo',
-        text: 'Prueba de correo desde Heroku'
-    };
-
-
-    console.log('ENVIANDO EMAIL...');
-    // Enviamos el email
-    transporter.sendMail(mailOptions, function (error, info) {
+    sg.API(request, function (error, response) {
+        console.log('RESULTADO DEL ENVIO DE MAIL');
         if (error) {
-            console.log(error);
-            res.status(500).send(error.message);
-        } else {
-            console.log("EMAIL SENT");
-            console.info(info)
-            res.status(200).send('EMAIL ENVIADO');
+            console.log('Error response received');
         }
+        
+        console.log(response.statusCode);
+        console.log(response.body);
+        console.log(response.headers);
     });
 };

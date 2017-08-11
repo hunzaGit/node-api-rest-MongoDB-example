@@ -223,7 +223,7 @@ function getParams(req, res, next) {
         query[elem] = (query[elem]) ? query[elem].split(',') : params[elem];
     });
 
-    console.log(query);
+    //console.log(query);
 
     req.query = query;
     next();
@@ -233,19 +233,11 @@ function getParams(req, res, next) {
 router.get('/get/:tipo/:num/:pag', getParams, function (req, res) {
     var modelo;
 
-
-    if (req.params.tipo === 'user') {
-        modelo = UserModel;
-    } else if (req.params.tipo === 'admin') {
-        modelo = AdminUserModel;
-    }
-
-
     AdminUserModel.find({
         sexo: {$in: req.query.sex},
         tamaño: {$in: req.query.tam},
         edad: {$in: req.query.edad}
-    }, (err, users) => {
+    },{sexo:1,tamaño:1,edad:1}, (err, users) => {
         "use strict";
         if (err) console.error(err);
         res.status(200).jsonp(users);
@@ -254,6 +246,30 @@ router.get('/get/:tipo/:num/:pag', getParams, function (req, res) {
 
 
 });
+
+
+router.get('/get/:id', getParams, function (req, res) {
+
+    AdminUserModel.findById(req.params.id, (err, user) => {
+        "use strict";
+        if (err) console.error(err);
+        res.status(200).jsonp(user);
+    });
+    
+});
+
+
+
+router.get('/getOne', function (req, res) {
+    AdminUserModel.find((err, users) => {
+        "use strict";
+        if (err) console.error(err);
+        res.status(200).jsonp(users);
+    })
+        .limit(1).skip(Math.floor(Math.random() * (100 - 0)) + 0);
+});
+
+
 
 
 var EmailCtrl = require('./Serv_Apli/mailCtrl');
