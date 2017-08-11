@@ -28,8 +28,11 @@ module.exports = (oper) => {
     },
 
         private_key: "./practica2_clave_privada.pem",
-            certificate: "./practica2_certificado_firmado.crt"
-    };
+            certificate: "./practica2_certificado_firmado.crt",
+
+        EMAIL_API: process.env.SENDGRID_API_KEY || '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'
+
+};
 
 
 }

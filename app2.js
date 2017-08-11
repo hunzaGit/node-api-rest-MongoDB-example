@@ -170,8 +170,6 @@ router.get('/loaderio-ff50c14950f9695428b614d8da4b41fc.txt', function(req, res) 
 });
 
 
-
-
 router.get('/saveUser', function (req, res) {
     const john = new UserModel({
         email: 'user2@site.com',
@@ -277,7 +275,7 @@ router.get('/getOne', function (req, res) {
 
 
 
-var EmailCtrl = require('./Serv_Apli/mailCtrl');
+var EmailCtrl = require('./Serv_Apli/ControladorEmail');
 
 router.get('/enviarMail/:email', EmailCtrl.sendEmail);
 
