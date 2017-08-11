@@ -279,7 +279,7 @@ router.get('/getOne', function (req, res) {
 
 var EmailCtrl = require('./Serv_Apli/mailCtrl');
 
-router.get('/enviarMail', EmailCtrl.sendEmail);
+router.get('/enviarMail/:email', EmailCtrl.sendEmail);
 
 
 
