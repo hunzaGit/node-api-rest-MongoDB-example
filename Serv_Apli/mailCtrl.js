@@ -9,8 +9,8 @@ exports.sendEmail = function (req, res, callback = Function()) {
     var helper = require('sendgrid').mail;
     var fromEmail = new helper.Email('rodrigo.trazas@gmail.com');
     var toEmail = new helper.Email('rodrigo.trazas@gmail.com');
-    var subject = 'Email desde desde Herou con SendGrid';
-    var content = new helper.Content('text/plain', 'and easy to do anywhere, even with Node.js <b>y esto es negrita en HTML</b>');
+    var subject = 'Hola rodriii prueba HTML';
+    var content = new helper.Content('text/HTML', "<html><body>Holaa,\n prueba de email desde Heroku con texto en <b>HTML</b></body></html>");
     var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
     var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
