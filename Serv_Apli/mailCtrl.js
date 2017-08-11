@@ -36,7 +36,7 @@ exports.sendEmail = function (req, res, callback = Function()) {
 
 
         if(response.statusCode == 202){
-            res.status(202).send('Email enviado');
+            res.status(202).send('Email enviado https://mail.google.com/mail/u/0/#search/subject%3A(Registro+adoptaUnAnimal+prueba)');
         }
     });
 };
