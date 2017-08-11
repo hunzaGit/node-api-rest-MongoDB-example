@@ -9,8 +9,12 @@ exports.sendEmail = function (req, res, callback = Function()) {
     var helper = require('sendgrid').mail;
     var fromEmail = new helper.Email('rodrigo.trazas@gmail.com');
     var toEmail = new helper.Email('rodrigo.trazas@gmail.com');
-    var subject = 'Hola rodriii prueba HTML';
-    var content = new helper.Content('text/HTML', "<html><body>Holaa,\n prueba de email desde Heroku con texto en <b>HTML</b></body></html>");
+    var subject = 'Registro adoptaUnAnimal prueba';
+    var content = new helper.Content('text/HTML', "<html><body>Holaa Rodri,<br>" +
+        "Esto es una prueba de email desde Heroku con texto escrito en <b>HTML</b>, " +
+         "y esta es la foto de mi careto"+
+            "<img align='center' src='public/images/neo.jpg' width='200' height='250'>"+
+        "<img align='center' src='https://cv-rodrigodemiguel.herokuapp.com/images/rodri.jpg' width='200' height='250'></body></html>");
     var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
     var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
