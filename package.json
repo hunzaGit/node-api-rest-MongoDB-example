@@ -1,6 +1,6 @@
 {
   "name": "node-api-rest-example",
-  "version": "2.5",
+  "version": "0.2.5",
   "main": "app2.js",
   "scripts": {
     "start": "node app2.js"
