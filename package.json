@@ -1,6 +1,6 @@
 {
   "name": "node-api-rest-example",
-  "version": "2.0",
+  "version": "2.5",
   "main": "app.js",
   "scripts": {
     "start": "node app2.js"
@@ -14,8 +14,6 @@
     "mongoose": "~4.7.7",
     "mongoose-extend-schema": "^1.0.0",
     "morgan": "^1.8.2",
-    "nodemailer": "^4.0.1",
-    "nodemailer-smtp-transport": "^2.7.4",
     "sendgrid": "^5.2.1"
   }
 }
