@@ -211,6 +211,56 @@ router.get('/saveAdmin', function (req, res) {
 
 });
 
+var bcrypt = require('bcrypt');
+const saltRounds = 14;
+
+router.post('/saveWithPass', function (req, res) {
+
+    console.log(req.body.password);
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+        // Store hash in your password DB.
+        console.log(hash);
+        const admin = new AdminUserModel({
+            email: req.body.email,
+            passwordHash: hash
+        });
+
+        admin.save((err, admin) => {
+            "use strict";
+            if (err) return res.status(500).send(err.message);
+            else res.status(201).send(admin);
+        });
+    });
+
+});
+
+router.post('/login', function (req, res) {
+
+    AdminUserModel.findOne({email:req.body.email}, (err, user) => {
+        "use strict";
+        if (err) res.status(500).jsonp(err);
+
+
+        bcrypt.compare(req.body.password, user.passwordHash, function(err, result) {
+            // result == true
+            console.log(user.passwordHash)
+            console.log(req.body.password)
+            console.log(result)
+            if(result){
+                console.log('password correcta');
+                res.status(202).jsonp(user);
+            }else{
+                res.status(401).jsonp(result);
+            }
+
+
+        });
+    });
+
+
+});
+
+
 var params = {
     sex: ['M', 'H'],
     tam: ['MP', 'P', 'M', 'G', 'MG'],
@@ -259,6 +309,27 @@ router.get('/get/:id', getParams, function (req, res) {
         res.status(200).jsonp(user);
     });
     
+});
+
+
+
+router.put('/put/:id', function (req, res) {
+
+    AdminUserModel.findById(req.params.id, (err, user) => {
+        "use strict";
+        if (err) console.error(err);
+        if(err) return res.status(500).send(err);
+        console.log(user.email);
+
+        user.validada = true;
+        user.save((err, user)=>{
+            if (err) console.error(err);
+            if(err) return res.status(500).send(err);
+            console.log(user);
+            res.status(200).jsonp(user);
+        });
+    });
+
 });
 
 
