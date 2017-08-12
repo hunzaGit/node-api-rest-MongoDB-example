@@ -1,7 +1,7 @@
 {
   "name": "node-api-rest-example",
   "version": "2.5",
-  "main": "app.js",
+  "main": "app2.js",
   "scripts": {
     "start": "node app2.js"
   },
@@ -15,5 +15,9 @@
     "mongoose-extend-schema": "^1.0.0",
     "morgan": "^1.8.2",
     "sendgrid": "^5.2.1"
+  },
+  "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.9"
   }
 }
