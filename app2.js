@@ -144,8 +144,8 @@ const AdminUserSchema = extendSchema(UserSchema, {
 
 
 //Configuracion de encriptacion de password
-var encKey = process.env.ENCRYPTATION_KEY || 'G2MYrfQWEKGoC83ZbbeC1HwIYyQfbggp3ng0/qGV978=';
-var sigKey = process.env.SIGNING_KEY || 'YB5cYV/0fA1yHa7urRgLr72UzvbBEJWeKYMA8h8FouDjsxCyogpyp/FiLe9WagtsEbicvRQsyPVl/JYsLP2KkA==';
+var encKey = process.env.ENCRYPTATION_KEY;
+var sigKey = process.env.SIGNING_KEY;
 // encrypt age regardless of any other options. name and _id will be left unencrypted
 AdminUserSchema.plugin(encrypt, { encryptionKey: encKey, signingKey: sigKey, encryptedFields: ['passwordHash'] });
 
