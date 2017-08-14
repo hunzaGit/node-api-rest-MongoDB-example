@@ -7,6 +7,7 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
     mongoose = require('mongoose'),
+    encrypt = require('mongoose-encryption'),
     morgan = require("morgan"), //Morgan nos muestra las peticiones por consola.
     fs = require('fs'),
     path = require('path'),
@@ -139,6 +140,15 @@ const AdminUserSchema = extendSchema(UserSchema, {
     edad: {type: String}
 });
 
+
+
+
+//Configuracion de encriptacion de password
+var encKey = process.env.ENCRYPTATION_KEY || 'G2MYrfQWEKGoC83ZbbeC1HwIYyQfbggp3ng0/qGV978=';
+var sigKey = process.env.SIGNING_KEY || 'YB5cYV/0fA1yHa7urRgLr72UzvbBEJWeKYMA8h8FouDjsxCyogpyp/FiLe9WagtsEbicvRQsyPVl/JYsLP2KkA==';
+// encrypt age regardless of any other options. name and _id will be left unencrypted
+AdminUserSchema.plugin(encrypt, { encryptionKey: encKey, signingKey: sigKey, encryptedFields: ['passwordHash'] });
+
 const UserModel = mongoose.model('users', UserSchema);
 const AdminUserModel = mongoose.model('admins', AdminUserSchema);
 
@@ -211,18 +221,12 @@ router.get('/saveAdmin', function (req, res) {
 
 });
 
-var bcrypt = require('bcrypt');
-const saltRounds = 14;
-
 router.post('/saveWithPass', function (req, res) {
 
     console.log(req.body.password);
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        // Store hash in your password DB.
-        console.log(hash);
         const admin = new AdminUserModel({
             email: req.body.email,
-            passwordHash: hash
+            passwordHash: req.body.password
         });
 
         admin.save((err, admin) => {
@@ -230,7 +234,6 @@ router.post('/saveWithPass', function (req, res) {
             if (err) return res.status(500).send(err.message);
             else res.status(201).send(admin);
         });
-    });
 
 });
 
@@ -239,14 +242,11 @@ router.post('/login', function (req, res) {
     AdminUserModel.findOne({email:req.body.email}, (err, user) => {
         "use strict";
         if (err) res.status(500).jsonp(err);
-
-
-        bcrypt.compare(req.body.password, user.passwordHash, function(err, result) {
             // result == true
             console.log(user.passwordHash)
             console.log(req.body.password)
-            console.log(result)
-            if(result){
+
+            if(user.passwordHash === req.body.password){
                 console.log('password correcta');
                 res.status(202).jsonp(user);
             }else{
@@ -254,8 +254,7 @@ router.post('/login', function (req, res) {
             }
 
 
-        });
-    });
+        })
 
 
 });
